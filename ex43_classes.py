@@ -103,7 +103,28 @@ class CentralCorridor(Scene):
 class LaserWeaponArmory(Scene):
 	
 	def enter(self):
-		pass
+		print(dedent("""
+			You gotta disarm a bomb.
+			You get 10 tries.
+			the code is 3 digits.
+		"""))
+		
+		code = f"{randint(1,9)}{randint(1,9)}{randint(1,9)}"
+		guess = input("[keypad]> ")
+		guesses = 0
+		
+		while guess != code and guesses < 10:
+			print("WRONG ENTRY!")
+			guesses += 1
+			guess = input("[keypad]> ")
+			
+		if guess == code:
+			print("Nice!!")
+			
+			return 'the_bridge'
+		else:
+			print("Yeah...you didn't make it...")
+			return 'death'
 	
 class TheBridge(Scene):
 	
