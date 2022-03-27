@@ -160,7 +160,28 @@ class TheBridge(Scene):
 class EscapePod(Scene):
 	
 	def enter(self):
-		pass
+		print(dedent("""
+			You make it to the escape pods.
+			There's 5 of them.
+			Which one do you pick?
+		"""))
+		
+		good_pod = randint(1,5)
+		guess = input("[pod #]> ")
+		
+		if int(guess) != good_pod:
+			print(dedent("""
+				Turns out that wasn't the right one.
+				You crash and burn.
+			"""))
+			return 'death'
+		else:
+			print(dedent("""
+				You get into pod {guess}
+				As you eject out of the ship, you see it explode.
+				YOU WIN!!
+			"""))
+			return 'finished'
 	
 
 class Map(object):
