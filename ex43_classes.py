@@ -129,7 +129,33 @@ class LaserWeaponArmory(Scene):
 class TheBridge(Scene):
 	
 	def enter(self):
-		pass
+		print(dedent("""
+			You get get on the scene.
+			There's 5 Gothon's on the bridge.
+			They see you've got the bomb.
+			Its a stand off...
+		"""))
+		
+		action = input("> ")
+		
+		if action == "throw the bomb":
+			print(dedent("""
+				You yeet the bomb and decide to run.
+				You're shot in the back.
+				As you lay dying, you know at least everyone's going down.
+			"""))
+			return 'death'
+		elif action == "slowly place the bomb":
+			print(dedent("""
+				You slowly place the bomb down.
+				Bolt.
+				Destroy the lock on your way out.
+				Head to the escape pod
+			"""))
+			return 'escape_pod'
+		else:
+			print("DOES NOT COMPUTE!")
+			return "the_bridge"
 	
 class EscapePod(Scene):
 	
